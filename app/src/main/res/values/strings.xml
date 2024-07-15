@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ListDemo</string>
+    <string name="miu_campus">Maharishi International University</string>
+    <string name="success">You are born to win</string>
+    <string name="compro_professionals">Compro Professionals</string>
+    <string name="compro_admission_team">Compro Admission Team</string>
+    <string name="faculty_student">Faculty with Student</string>
+    <string name="sustainable_living_center">Sustainable Living Center</string>
+</resources>
