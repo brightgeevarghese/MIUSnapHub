@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
@@ -52,7 +53,8 @@ fun QuoteCard(quote: Quote, modifier: Modifier   = Modifier) {
             Image(
                 painter = painterResource(id = quote.imageResourceId),
                 contentDescription = stringResource(id = quote.stringResourceID),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .height(200.dp),
                 contentScale = ContentScale.Crop
             )
@@ -82,8 +84,54 @@ fun QuoteList(modifier: Modifier = Modifier) {
     showSystemUi = true
 )
 @Composable
-fun GreetingPreview() {
+fun QuoteListPreview() {
     ListDemoTheme {
         QuoteList()
+    }
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun LazyColumnPreview() {
+    LazyColumn {
+        // Add a single item
+        item {
+            Text(text = "MIU")
+        }
+        // Add 10 items
+        items(10) {
+//            index ->  Text(text = "Item: $index")
+            Text(text = "Index: $it")
+        }
+        items(
+            listOf("Android", "iOS", "Web", "Desktop")
+        ) {
+            Text(text = "Item: $it")
+        }
+        // Add another single item
+        item {
+            Text(text = "End")
+        }
+    }
+}
+
+val daysOfWeek = listOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun LazyRowPreview() {
+    LazyRow {
+        items(daysOfWeek) {
+            Text(
+                text = it,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+
     }
 }
