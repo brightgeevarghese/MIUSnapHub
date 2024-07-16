@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -72,11 +73,13 @@ fun QuoteCard(quote: Quote, modifier: Modifier   = Modifier) {
 
 @Composable
 fun QuoteList(modifier: Modifier = Modifier) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         items(Datasource().loadQuotes()) { quote ->
             QuoteCard(
-                quote = quote,
-                modifier = Modifier.padding(8.dp)
+                quote = quote
             )
         }
     }
@@ -100,7 +103,9 @@ fun QuoteListPreview() {
 )
 @Composable
 fun LazyColumnPreview() {
-    LazyColumn {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         // Add a single item
         item {
             Text(text = "MIU")
@@ -129,13 +134,13 @@ val daysOfWeek = listOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
 )
 @Composable
 fun LazyRowPreview() {
-    LazyRow {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         items(daysOfWeek) {
             Text(
-                text = it,
-                modifier = Modifier.padding(8.dp)
+                text = it
             )
         }
-
     }
 }
